@@ -1,0 +1,6 @@
+{
+  "development": {
+    "PORT": 5000,
+    "MONGODB_URI": "mongodb://whitershade:development34@ds155815.mlab.com:55815/bookmarker"
+  }
+}
