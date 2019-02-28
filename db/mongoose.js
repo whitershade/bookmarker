@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 mongoose.Promise = global.Promise; // Use native promises instead of mpromise
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -16,6 +15,5 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('open', () => {
   global.console.error('MongoDB connect success');
 });
-
 
 module.exports = mongoose;
