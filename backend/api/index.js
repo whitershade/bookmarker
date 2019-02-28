@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const articles = require('./articles');
+const articles = require('./articles/index');
 
 const routes = Router();
 
