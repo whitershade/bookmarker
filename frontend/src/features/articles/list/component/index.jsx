@@ -13,7 +13,13 @@ class Articles extends Component {
   render() {
     return (
       <div className={styles.articles}>
-        { this.props.data.map(({ _id, title }) => <p><Link to={`/articles/${_id}`}>{title}</Link></p>) }
+        { this.props.data.map(({ _id, title }) => (
+          <p key={_id}>
+            <Link to={`/articles/${_id}`}>
+              {title}
+            </Link>
+          </p>)
+        )}
       </div>
     );
   }

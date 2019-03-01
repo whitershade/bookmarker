@@ -6,16 +6,16 @@ const startLoadItems = createAction(types.START_LOAD_ITEMS);
 const addItems = createAction(types.ADD_ITEMS);
 const loadItemsError = createAction(types.LOAD_ITEMS_ERROR);
 
-export const loadItems = () => dispatch => {
-  dispatch(startLoadItems());
+export const loadItems = () => async dispatch => {
+  try {
+    dispatch(startLoadItems());
 
-  return axios.get('/api/articles')
-    .then(({ data }) => {
-      dispatch(addItems(data));
-    })
-    .catch(e => {
-      alert(e);
+    const { data } = await axios.get('/api/articles');
 
-      dispatch(loadItemsError());
-    });
+    dispatch(addItems(data));
+  } catch (e) {
+    alert(e);
+
+    dispatch(loadItemsError());
+  }
 };

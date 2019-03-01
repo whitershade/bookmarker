@@ -6,16 +6,16 @@ import * as types from './constants';
 const startPushItem = createAction(types.START_PUSH_ITEM);
 const pushItemError = createAction(types.PUSH_ITEM_ERROR);
 
-export const onSubmit = ({ url }) => dispatch => {
-  dispatch(startPushItem());
+export const onSubmit = ({ url }) => async dispatch => {
+  try {
+    dispatch(startPushItem());
 
-  return axios.post('/api/articles', { url })
-    .then(({ data: { _id } }) => {
-      dispatch(push(`/articles/${_id}`));
-    })
-    .catch(e => {
-      alert(e);
+    const { data: { _id } } = await axios.post('/api/articles', { url });
 
-      dispatch(pushItemError());
-    });
+    dispatch(push(`/articles/${_id}`));
+  } catch (e) {
+    alert(e);
+
+    dispatch(pushItemError());
+  }
 };
