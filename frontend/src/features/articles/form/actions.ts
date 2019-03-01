@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { createAction } from 'redux-actions';
 import { push } from 'connected-react-router';
+import { Dispatch } from 'redux';
 import * as types from './constants';
 
 const startPushItem = createAction(types.START_PUSH_ITEM);
 const pushItemError = createAction(types.PUSH_ITEM_ERROR);
 
-export const onSubmit = ({ url }) => async dispatch => {
+export const onSubmit = ({ url }: { url: string }) => async (dispatch:Dispatch) => {
   try {
     dispatch(startPushItem());
 

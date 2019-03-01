@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
-const PageWrapper = Component => props => (
+const PageWrapper = (Component: ComponentType) => (props:any) => (
   <div className={styles.page}>
     <header className={styles.pageHeader}>
       <Link to="/">Articles </Link>

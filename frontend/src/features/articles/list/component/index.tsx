@@ -1,10 +1,19 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../../../../components/PageWrapper';
 import styles from './styles.module.css';
 
-const Articles = ({ loadItems, data }) => {
+interface Articles {
+    _id: string;
+    title: string;
+}
+
+type Props = {
+  loadItems: Function,
+  data: Articles[]
+}
+
+const Articles: React.SFC<Props> = ({ loadItems, data }) => {
   useEffect(() => {
     loadItems();
   }, []);
@@ -22,10 +31,5 @@ const Articles = ({ loadItems, data }) => {
   );
 };
 
-Articles.propTypes = {
-  data: PropTypes.instanceOf(Array),
-  isLoading: PropTypes.bool,
-  loadItems: PropTypes.func.isRequired
-};
-
+// @ts-ignore
 export default PageWrapper(Articles);

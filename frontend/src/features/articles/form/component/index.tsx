@@ -1,9 +1,12 @@
 import React  from 'react';
-import PropTypes from 'prop-types';
 import { Form, Field } from 'react-final-form';
 import PageWrapper from "../../../../components/PageWrapper";
 
-const ArticleForm = ({ onSubmit }) => (
+type Props = {
+    onSubmit: any
+}
+
+const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (
   <Form
     onSubmit={onSubmit}
     render={({ handleSubmit, pristine, invalid }) => (
@@ -21,8 +24,5 @@ const ArticleForm = ({ onSubmit }) => (
   />
 );
 
-ArticleForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-};
-
+// @ts-ignore
 export default PageWrapper(ArticleForm);

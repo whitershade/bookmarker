@@ -11,7 +11,7 @@ const props = {
 
 const Wrapper = shallow(<Component {...props} />);
 
-describe('"features/articles" component', () => {
+describe('"features/articles/single" component', () => {
   it('should renders as "div"', () => {
     expect(Wrapper.type()).toBe('div');
   });

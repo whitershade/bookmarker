@@ -1,10 +1,23 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+// @ts-ignore
 import renderHTML from 'react-render-html';
 import PageWrapper from '../../../../components/PageWrapper';
 // import styles from './styles.module.css';
 
-const Article = (
+type Props = {
+    isLoading: boolean,
+    loadItem: Function,
+    data: {
+      content: string
+    },
+    match: {
+      params: {
+        id: string
+      }
+    }
+}
+
+const Article:React.SFC<Props> = (
   { isLoading, loadItem, data: { content }, match: { params: { id } }}
 ) => {
   useEffect(() => {
@@ -20,10 +33,5 @@ const Article = (
   );
 };
 
-Article.propTypes = {
-  data: PropTypes.instanceOf(Object),
-  isLoading: PropTypes.bool,
-  loadItem: PropTypes.func.isRequired
-};
-
+// @ts-ignore
 export default PageWrapper(Article);

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { History } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../../../routes/index';
 import './styles.css';
 import styles from './styles.module.css';
 
-class App extends Component {
-  render() {
-    const { history, isLoading } = this.props;
+type Props = {
+  history: History
+}
 
-    if (isLoading) return null;
+class App extends Component<Props> {
+  render() {
+    const { history } = this.props;
 
     return (
       <div className={styles.container}>
@@ -20,10 +22,5 @@ class App extends Component {
     )
   }
 }
-
-App.propTypes = {
-  history: PropTypes.object,
-  isLoading: PropTypes.bool
-};
 
 export default App;

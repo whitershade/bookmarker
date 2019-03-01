@@ -2,25 +2,30 @@ import * as types from '../constants';
 
 export const initialState = {
   isLoading: false,
-  data: []
+  data: {}
 };
 
-export default function reducer(state = initialState, { type, payload }) {
-  switch (type) {
-    case types.START_LOAD_ITEMS:
+type Action = {
+  type?: string,
+  payload?: any
+}
+
+export default function reducer(state = initialState, action: Action) {
+  switch (action.type) {
+    case types.START_LOAD_ITEM:
       return {
         ...state,
         isLoading: true
       };
 
-    case types.ADD_ITEMS:
+    case types.ADD_ITEM:
       return {
         ...state,
         isLoading: false,
-        data: payload
+        data: action.payload
       };
 
-    case types.LOAD_ITEMS_ERROR:
+    case types.LOAD_ITEM_ERROR:
       return {
         ...state,
         isLoading: false

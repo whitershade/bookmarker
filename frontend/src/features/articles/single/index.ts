@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Component from './component';
 import { loadItem } from './actions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: { articles: { single: { data: Object; isLoading: boolean; }; }; }) => ({
   data: state.articles.single.data,
   isLoading: state.articles.single.isLoading
 });

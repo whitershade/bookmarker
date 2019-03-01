@@ -7,9 +7,9 @@ describe('articles reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it(`should handle ${types.START_LOAD_ITEMS}`, () => {
+  it(`should handle ${types.START_LOAD_ITEM}`, () => {
     const action = {
-      type: types.START_LOAD_ITEMS
+      type: types.START_LOAD_ITEM
     };
 
     const expectedState = {
@@ -20,7 +20,7 @@ describe('articles reducer', () => {
     expect(reducer(initialState, action)).toEqual(expectedState);
   });
 
-  it(`should handle ${types.ADD_ITEMS}`, () => {
+  it(`should handle ${types.ADD_ITEM}`, () => {
     const payload = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
     const state = {
@@ -30,7 +30,7 @@ describe('articles reducer', () => {
     };
 
     const action = {
-      type: types.ADD_ITEMS,
+      type: types.ADD_ITEM,
       payload
     };
 
@@ -43,13 +43,14 @@ describe('articles reducer', () => {
     expect(reducer(state, action)).toEqual(expectedState);
   });
 
-  it(`should handle ${types.LOAD_ITEMS_ERROR}`, () => {
+  it(`should handle ${types.LOAD_ITEM_ERROR}`, () => {
     const state = {
+      ...initialState,
       isLoading: true
     };
 
     const action = {
-      type: types.LOAD_ITEMS_ERROR
+      type: types.LOAD_ITEM_ERROR
     };
 
     const expectedState = {

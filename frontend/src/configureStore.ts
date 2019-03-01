@@ -6,8 +6,10 @@ import createRootReducer from './reducers';
 
 export const history = createBrowserHistory();
 
-export default function configureStore(preloadedState) {
-  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export default function configureStore(preloadedState?: Object) {
+  const windowIfDefined = typeof window === 'undefined' ? null : window as any;
+
+  const composeEnhancer = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     createRootReducer(history),
     preloadedState,
