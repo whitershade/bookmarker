@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../../../routes/index';
 import './styles.css';
+import styles from './styles.module.css';
 
 class App extends Component {
   render() {
@@ -11,9 +12,11 @@ class App extends Component {
     if (isLoading) return null;
 
     return (
-      <ConnectedRouter history={history}>
-        { routes }
-      </ConnectedRouter>
+      <div className={styles.container}>
+        <ConnectedRouter history={history}>
+          { routes }
+        </ConnectedRouter>
+      </div>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'react-final-form'
+import { Form, Field } from 'react-final-form';
+import PageWrapper from "../../../../components/PageWrapper";
 
 const ArticleForm = ({ onSubmit }) => (
   <Form
@@ -24,4 +25,4 @@ ArticleForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
-export default ArticleForm;
+export default PageWrapper(ArticleForm);
