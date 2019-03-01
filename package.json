@@ -6,18 +6,13 @@
   "scripts": {
     "start": "node ./backend/index.js",
     "install": "npm i --prefix frontend && npm i --prefix backend",
-    "develop": "concurrently \"cross-env nodemon ./backend/index.js\" \"npm run start --prefix ./frontend\"",
+    "develop": "concurrently \"npm run develop --prefix backend\" \"npm run start --prefix frontend\"",
     "build": "npm install --prefix frontend && npm run build --prefix frontend && cross-env NODE_ENV=production PORT=5000 node ./backend/index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "oprokopenko",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^4.1.0",
-    "cross-env": "^5.2.0",
-    "nodemon": "^1.18.10"
-  },
-  "nodemonConfig": {
-    "ignore": ["frontend/*"]
+    "concurrently": "^4.1.0"
   }
 }

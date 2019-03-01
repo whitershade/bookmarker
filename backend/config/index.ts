@@ -1,4 +1,4 @@
-const { forEach } = require('lodash');
+import { forEach } from 'lodash';
 const config = require('./config.json');
 
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'development';

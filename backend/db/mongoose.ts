@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'dev') {
   mongoose.set('debug', true);
 }
 
-mongoose.connection.on('error', (err) => {
+mongoose.connection.on('error', (err: Error) => {
   global.console.error('MongoDB err', err);
   process.exit(0);
 });
@@ -16,4 +16,4 @@ mongoose.connection.on('open', () => {
   global.console.error('MongoDB connect success');
 });
 
-module.exports = mongoose;
+export default mongoose

@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const controllers = require('./controllers');
+import { Router } from 'express';
+import * as controllers from './controllers';
 
 const router = Router();
 
@@ -26,4 +26,4 @@ router
   );
 
 
-module.exports = router;
+export default router;
