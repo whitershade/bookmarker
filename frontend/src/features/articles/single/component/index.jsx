@@ -1,27 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import renderHTML from 'react-render-html';
-import styles from './styles.module.css';
+import PageWrapper from '../../../../components/PageWrapper';
+// import styles from './styles.module.css';
 
-class Article extends Component {
-  constructor(props) {
-    super(props);
+const Article = (
+  { isLoading, loadItem, data: { content }, match: { params: { id } }}
+) => {
+  useEffect(() => {
+    loadItem(id);
+  }, [id]);
 
-    this.props.loadItem(this.props.match.params.id);
-  }
+  if (isLoading || !content) return null;
 
-  render() {
-    const { isLoading, data } = this.props;
-
-    if (isLoading || !data.content) return null;
-
-    return (
-      <div className={styles.article}>
-        {renderHTML(data.content)}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {renderHTML(content)}
+    </div>
+  );
+};
 
 Article.propTypes = {
   data: PropTypes.instanceOf(Object),
@@ -29,4 +26,4 @@ Article.propTypes = {
   loadItem: PropTypes.func.isRequired
 };
 
-export default Article;
+export default PageWrapper(Article);

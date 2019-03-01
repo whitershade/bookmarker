@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PageWrapper from '../../../../components/PageWrapper';
 import styles from './styles.module.css';
 
-class Articles extends Component {
-  constructor(props) {
-    super(props);
+const Articles = ({ loadItems, data }) => {
+  useEffect(() => {
+    loadItems();
+  }, []);
 
-    this.props.loadItems();
-  }
-
-  render() {
-    return (
-      <div className={styles.articles}>
-        { this.props.data.map(({ _id, title }) => (
-          <p key={_id}>
-            <Link to={`/articles/${_id}`}>
-              {title}
-            </Link>
-          </p>)
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.articles}>
+      { data.map(({ _id, title }) => (
+        <p key={_id}>
+          <Link to={`/articles/${_id}`}>
+            {title}
+          </Link>
+        </p>)
+      )}
+    </div>
+  );
+};
 
 Articles.propTypes = {
   data: PropTypes.instanceOf(Array),
@@ -31,4 +28,4 @@ Articles.propTypes = {
   loadItems: PropTypes.func.isRequired
 };
 
-export default Articles;
+export default PageWrapper(Articles);
