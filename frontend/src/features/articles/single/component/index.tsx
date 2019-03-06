@@ -33,5 +33,4 @@ const Article:React.SFC<Props> = (
   );
 };
 
-// @ts-ignore
 export default PageWrapper(Article);

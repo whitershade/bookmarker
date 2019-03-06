@@ -31,5 +31,4 @@ const Articles: React.SFC<Props> = ({ loadItems, data }) => {
   );
 };
 
-// @ts-ignore
 export default PageWrapper(Articles);
