@@ -24,5 +24,4 @@ const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (
   />
 );
 
-// @ts-ignore
 export default PageWrapper(ArticleForm);

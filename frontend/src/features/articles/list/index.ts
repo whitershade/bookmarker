@@ -2,16 +2,7 @@ import { connect } from 'react-redux';
 import Component from './component';
 import { loadItems } from './actions';
 
-type StateProps = {
-  articles: {
-    list: {
-      data: Object;
-      isLoading: boolean;
-    };
-  };
-}
-
-const mapStateToProps = (state: StateProps) => ({
+const mapStateToProps = (state:any) => ({
   data: state.articles.list.data,
   isLoading: state.articles.list.isLoading
 });
