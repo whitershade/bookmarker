@@ -47,7 +47,7 @@ UserSchema.statics = {
       });
   },
 
-  serializeUser(user: { _id: { toString: () => void; }; }, next: (error: boolean, user: any) => void) {
+  serializeUser(user: { _id: { toString: () => void; }; }, next: (error: boolean, id: any) => void) {
     next(false, user._id.toString());
   },
 
@@ -57,13 +57,8 @@ UserSchema.statics = {
       .select('email name')
       .lean()
       .exec((err: { message: string; }, user: any) => {
-        if (err) {
-          return next({ message: err.message });
-        }
-
-        if (!user) {
-          return next({ message: 'email is not correct' });
-        }
+        if (err) return next({ message: err.message });
+        if (!user) return next({ message: 'email is not correct' });
 
         next(false, user);
       });

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import Component from './component';
-import { loadItem as loadUser } from '../user/actions';
+import Component from './component/index';
+import { onSubmit } from '../actions';
 
 const mapDispatchToProps = {
-    loadUser
+    onSubmit
 };
 
 export default connect(null, mapDispatchToProps)(Component);

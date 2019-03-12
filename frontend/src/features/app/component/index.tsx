@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {useEffect, memo} from 'react';
 import { History } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../../../routes/index';
@@ -6,21 +6,23 @@ import './styles.css';
 import styles from './styles.module.css';
 
 type Props = {
-  history: History
+  history: History,
+  loadUser: Function
 }
 
-class App extends Component<Props> {
-  render() {
-    const { history } = this.props;
+const App:React.SFC<Props> = ({ history, loadUser }) => {
+    useEffect(() => {
+        loadUser();
+    }, []);
 
     return (
-      <div className={styles.container}>
-        <ConnectedRouter history={history}>
-          { routes }
-        </ConnectedRouter>
-      </div>
-    )
-  }
-}
+        <div className={styles.container}>
+            <ConnectedRouter history={history}>
+                { routes }
+            </ConnectedRouter>
+        </div>
+    );
+};
 
 export default App;
+
