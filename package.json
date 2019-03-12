@@ -6,13 +6,18 @@
   "scripts": {
     "start": "node ./backend/index.js",
     "install": "npm i --prefix frontend && npm i --prefix backend",
-    "develop": "concurrently \"npm run develop --prefix backend\" \"npm run start --prefix frontend\"",
+    "develop": "concurrently \"npm run develop --prefix backend\" \"PORT=3003 npm run start --prefix frontend\"",
     "build": "npm install --prefix frontend && npm run build --prefix frontend && cross-env NODE_ENV=production PORT=5000 node ./backend/index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "lint": "eslint ./frontend/src"
   },
   "author": "oprokopenko",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^4.1.0"
-  }
+  },
+  "eslintConfig": {
+    "extends": "airbnb"
+  },
+  "devDependencies": {}
 }
