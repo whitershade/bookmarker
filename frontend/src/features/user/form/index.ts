@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './component/index';
-import { onSubmit } from '../actions';
+import { login as onSubmit } from '../actions';
 
 const mapDispatchToProps = {
     onSubmit

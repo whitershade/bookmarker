@@ -11,6 +11,7 @@ const startPushItem = createAction(types.START_PUSH_ITEM);
 const pushItemError = createAction(types.PUSH_ITEM_ERROR);
 
 const authenticate = createAction(types.AUTHENTICATE);
+const unauthenticate = createAction(types.UNAUTHENTICATE);
 
 export const loadItem = () => async (dispatch:Dispatch) => {
   try {
@@ -26,7 +27,7 @@ export const loadItem = () => async (dispatch:Dispatch) => {
   }
 };
 
-export const onSubmit = ({ email, password }: { email: string, password: string }) => async (dispatch:Dispatch) => {
+export const login = ({ email, password }: { email: string, password: string }) => async (dispatch:Dispatch) => {
     try {
         dispatch(startPushItem());
 
@@ -34,6 +35,20 @@ export const onSubmit = ({ email, password }: { email: string, password: string 
 
         dispatch(addItem(data));
         dispatch(authenticate());
+    } catch (e) {
+        alert(e);
+
+        dispatch(pushItemError());
+    }
+};
+
+export const logout = () => async(dispatch:Dispatch) => {
+    try {
+        dispatch(startPushItem());
+
+        await axios.get('/api/users/logout');
+
+        dispatch(unauthenticate());
     } catch (e) {
         alert(e);
 

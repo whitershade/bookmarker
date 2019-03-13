@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PageWrapper from '../../../../decorators/PageWrapper';
+import PageWrapper from '../../../../decorators/PageWrapper/index';
 import styles from './styles.module.css';
 
 interface Articles {

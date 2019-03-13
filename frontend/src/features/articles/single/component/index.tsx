@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // @ts-ignore
 import renderHTML from 'react-render-html';
-import PageWrapper from '../../../../decorators/PageWrapper';
+import PageWrapper from '../../../../decorators/PageWrapper/index';
 // import styles from './styles.module.css';
 
 type Props = {
