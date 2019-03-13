@@ -8,7 +8,12 @@ const Schema = new mongoose.Schema({
     content: {
       type: String,
       required: true
-    }
+    },
+    addedBy: {
+        ref: 'User',
+        required: true,
+        type: mongoose.Schema.Types.ObjectId
+    },
   },
   { timestamps: true, collection: 'Articles' });
 

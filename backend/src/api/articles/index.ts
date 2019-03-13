@@ -7,29 +7,28 @@ const router = Router();
 router
   .get(
     '/',
-      isAuth,
+    isAuth,
     controllers.getItems
   )
   .get(
     '/:id',
-      isAuth,
+    isAuth,
     controllers.getItem
   )
   .post(
     '/',
-      isAuth,
+    isAuth,
     controllers.createItem
   )
   .patch(
     '/:id',
-      isAuth,
+    isAuth,
     controllers.patchItem
   )
   .delete(
     '/:id',
-      isAuth,
+    isAuth,
     controllers.deleteItem
   );
-
 
 export default router;
