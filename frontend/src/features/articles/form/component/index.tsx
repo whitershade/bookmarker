@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Form, Field } from 'react-final-form';
-import PageWrapper from "../../../../decorators/PageWrapper";
+import PageWrapper from "../../../../decorators/PageWrapper/index";
 
 type Props = {
     onSubmit: any

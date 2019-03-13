@@ -3,8 +3,9 @@ import { handleActions } from 'redux-actions';
 import { startLoad, addToState, loadError } from '../../../reducers/common';
 
 export const initialState = {
+    data: {},
     isLoading: false,
-    data: {}
+    isAuthenticated: false
 };
 
 export default handleActions(
@@ -16,6 +17,13 @@ export default handleActions(
             return {
                 ...state,
                 isAuthenticated: true
+            }
+        },
+        [types.UNAUTHENTICATE]: (state: any) => {
+            return {
+                ...state,
+                data: {},
+                isAuthenticated: false,
             }
         }
     },
