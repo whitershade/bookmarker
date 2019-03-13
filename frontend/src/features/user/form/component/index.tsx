@@ -1,6 +1,8 @@
-import React  from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
+import TextField from '@material-ui/core/TextField';
 import PageWrapper from "../../../../decorators/PageWrapper/index";
+import Button from "@material-ui/core/Button/Button";
 
 type Props = {
     onSubmit: any
@@ -11,19 +13,35 @@ const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (
         onSubmit={onSubmit}
         render={({ handleSubmit, pristine, invalid }) => (
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email</label>
-                    <Field name="email" component="input" />
-                </div>
+                <Field
+                    name="email"
+                    render={({ input, meta }) => (
+                        <TextField
+                            {...input}
+                            label="Email"
+                        />
+                    )}
+                />
 
-                <div>
-                    <label>Password</label>
-                    <Field name="password" component="input" />
-                </div>
+                <Field
+                    name="password"
+                    render={({ input, meta }) => (
+                        <TextField
+                            {...input}
+                            type="password"
+                            label="Password"
+                        />
+                    )}
+                />
 
-                <button type="submit" disabled={pristine || invalid}>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    disabled={pristine || invalid}
+                >
                     Submit
-                </button>
+                </Button>
             </form>
         )}
     />

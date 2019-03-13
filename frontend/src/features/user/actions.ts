@@ -20,6 +20,7 @@ export const loadItem = () => async (dispatch:Dispatch) => {
     const { data } = await axios.get('/api/users');
 
     dispatch(addItem(data));
+    dispatch(authenticate());
   } catch (e) {
     alert(e);
 
