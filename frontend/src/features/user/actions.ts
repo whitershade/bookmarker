@@ -4,7 +4,6 @@ import { Dispatch } from 'redux';
 import * as types from './constants';
 
 const startLoadItem = createAction(types.START_LOAD_ITEM);
-const addItem = createAction(types.ADD_ITEM);
 const loadItemError = createAction(types.LOAD_ITEM_ERROR);
 
 const startPushItem = createAction(types.START_PUSH_ITEM);
@@ -19,8 +18,7 @@ export const loadItem = () => async (dispatch:Dispatch) => {
 
     const { data } = await axios.get('/api/users');
 
-    dispatch(addItem(data));
-    dispatch(authenticate());
+    dispatch(authenticate(data));
   } catch (e) {
     alert(e);
 
@@ -34,8 +32,7 @@ export const login = ({ email, password }: { email: string, password: string }) 
 
         const { data } = await axios.post('/api/users/login', { email, password });
 
-        dispatch(addItem(data));
-        dispatch(authenticate());
+        dispatch(authenticate(data));
     } catch (e) {
         alert(e);
 
@@ -50,6 +47,18 @@ export const logout = () => async(dispatch:Dispatch) => {
         await axios.get('/api/users/logout');
 
         dispatch(unauthenticate());
+    } catch (e) {
+        alert(e);
+
+        dispatch(pushItemError());
+    }
+};
+
+export const register = ({ email, password }: { email: string, password: string }) => async (dispatch:Dispatch) => {
+    try {
+        dispatch(startPushItem());
+
+        axios.post('/api/users', { email, password });
     } catch (e) {
         alert(e);
 

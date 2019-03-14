@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import Component from './component';
+import {loadItem as loadUser} from "../../features/user/actions";
 
 
 const mapStateToProps = (state: any) => ({
-    isAuthenticated: state.user.isAuthenticated,
+    isLoading: state.user.isLoading,
+    isAuthenticated: state.user.isAuthenticated
 });
 
+const mapDispatchToProps = {
+    loadUser
+};
 
-export default connect(mapStateToProps)(Component);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

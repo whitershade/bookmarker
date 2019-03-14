@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router';
 
 
-const Component = ({ isAuthenticated, component: Component, ...rest }: any) => {
-    if (!isAuthenticated) alert('401');
+const Component = ({ isAuthenticated, isLoading, loadUser, component: Component, ...rest }: any) => {
+    const [initialized, initialize] = useState(false);
+
+    useEffect(() => {
+        loadUser();
+        !initialized && initialize(true);
+    }, [isAuthenticated]);
+
+    if (!initialized || isLoading) return null;
 
     return (
         <Route

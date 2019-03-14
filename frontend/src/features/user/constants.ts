@@ -1,5 +1,4 @@
 export const START_LOAD_ITEM = '@USERS/START_LOAD_ITEM';
-export const ADD_ITEM = '@USERS/ADD_ITEM';
 export const LOAD_ITEM_ERROR = '@USERS/LOAD_ITEMS_ERROR';
 
 export const START_PUSH_ITEM = '@USER/START_PUSH_ITEM';
