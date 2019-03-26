@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button/Button';
-import PageWrapper from '../../../../decorators/PageWrapper/index';
+import PageWrapper from '../../../../decorators/PageWrapper';
 import styles from './styles.module.css';
 
 
@@ -46,7 +46,7 @@ const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (
           color="primary"
           disabled={pristine || invalid}
         >
-                    Submit
+          Submit
         </Button>
       </form>
     )}

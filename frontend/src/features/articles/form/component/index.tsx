@@ -1,6 +1,10 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button/Button';
 import PageWrapper from '../../../../decorators/PageWrapper/index';
+import styles from './styles.module.css';
+
 
 interface Props {
   onSubmit: any;
@@ -11,14 +15,22 @@ const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (
     onSubmit={onSubmit}
     render={({ handleSubmit, pristine, invalid }) => (
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>URL</label>
-          <Field name="url" component="input" placeholder="URL" />
+        <div className={styles.field}>
+          <Field
+            name="url"
+            render={({ input, meta }) => (
+              <TextField
+                {...input}
+                name="url"
+                placeholder="URL"
+              />
+            )}
+          />
         </div>
 
-        <button type="submit" disabled={pristine || invalid}>
+        <Button type="submit" disabled={pristine || invalid}>
           Submit
-        </button>
+        </Button>
       </form>
     )}
   />
