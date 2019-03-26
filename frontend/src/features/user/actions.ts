@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'redux';
 import * as types from './constants';
+import api from '../../utils/api';
 
 const startLoadItem = createAction(types.START_LOAD_ITEM);
 const loadItemError = createAction(types.LOAD_ITEM_ERROR);
@@ -18,7 +18,7 @@ export const loadItem = () => async (dispatch: Dispatch) => {
   try {
     dispatch(startLoadItem());
 
-    const { data } = await axios.get('/api/users');
+    const { data } = await api.get('users');
 
     dispatch(authenticate(data));
   } catch (e) {
@@ -32,7 +32,7 @@ export const logout = () => async (dispatch: Dispatch) => {
   try {
     dispatch(startPushItem());
 
-    await axios.get('/api/users/logout');
+    await api.get('users/logout');
 
     dispatch(unauthenticate());
   } catch (e) {

@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import PageWrapper from '../../../../decorators/PageWrapper/index';
-import styles from './styles.module.css';
 
 interface Articles {
   _id: string;
@@ -11,26 +17,37 @@ interface Articles {
 interface Props {
   loadItems: Function;
   data: Articles[];
-  isLoading: boolean;
 }
 
-const Articles: React.SFC<Props> = ({ loadItems, data }) => {
+const Articles: FC<Props> = ({ loadItems, data }) => {
   useEffect(() => {
-    console.log('bum');
     loadItems();
   }, []);
 
   return (
-    <div className={styles.articles}>
+    <List component="nav">
       { data.map(({ _id, title }) => (
-        <p key={_id}>
+        <ListItem button key={_id}>
           <Link to={`/articles/${_id}`}>
-            {title}
+            <ListItemText primary={title} />
           </Link>
-        </p>
+          <ListItemSecondaryAction>
+            <IconButton aria-label="Delete">
+              <DeleteIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
       ))}
-    </div>
+    </List>
   );
 };
+
+// Articles.propTypes = {
+//   loadItems: PropTypes.func.isRequired,
+//   data: PropTypes.arrayOf(PropTypes.shape({
+//     _id: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//   })).isRequired,
+// };
 
 export default PageWrapper(Articles);

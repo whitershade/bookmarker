@@ -1,13 +1,15 @@
 import { Dispatch } from 'redux';
-import axios from 'axios';
 import { push } from 'connected-react-router';
 import { startPushItem, authenticate, pushItemError } from '../actions';
+import api from '../../../utils/api';
 
-export const login = ({ email, password }: { email: string; password: string }) => async (dispatch: Dispatch) => {
+export const login = (
+  { email, password }: { email: string; password: string },
+) => async (dispatch: Dispatch) => {
   try {
     dispatch(startPushItem());
 
-    const { data } = await axios.post('/api/users/login', { email, password });
+    const { data } = await api.post('users/login', { email, password });
 
     dispatch(authenticate(data));
     dispatch(push('/'));

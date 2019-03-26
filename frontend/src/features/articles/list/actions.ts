@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'redux';
 import * as types from './constants';
+import api from '../../../utils/api';
 
 const startLoadItems = createAction(types.START_LOAD_ITEMS);
 const addItems = createAction(types.ADD_ITEMS);
@@ -11,7 +11,7 @@ export const loadItems = () => async (dispatch: Dispatch) => {
   try {
     dispatch(startLoadItems());
 
-    const { data } = await axios.get('/api/articles');
+    const { data } = await api.get('articles');
 
     dispatch(addItems(data));
   } catch (e) {
