@@ -10,7 +10,7 @@ const NoMatch = () => <div>404</div>;
 
 const routes = (
   <Switch>
-    <PrivateRoute exact path="/" component={Articles}/>
+    <PrivateRoute exact path="/" component={Articles} />
     <PrivateRoute exact path="/articles/add" component={ArticleForm} />
     <PrivateRoute exact path="/articles/:id" component={Article} />
     <Route exact path="/login" component={LoginForm} />

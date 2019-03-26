@@ -1,9 +1,9 @@
-import React  from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
-import PageWrapper from "../../../../decorators/PageWrapper/index";
+import PageWrapper from '../../../../decorators/PageWrapper/index';
 
-type Props = {
-    onSubmit: any
+interface Props {
+  onSubmit: any;
 }
 
 const ArticleForm: React.SFC<Props> = ({ onSubmit }) => (

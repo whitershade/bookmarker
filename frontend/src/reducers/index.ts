@@ -7,7 +7,7 @@ import user from '../features/user/reducer';
 const rootReducer = (history: History) => combineReducers({
   router: connectRouter(history),
   articles,
-  user
+  user,
 });
 
 export default rootReducer;

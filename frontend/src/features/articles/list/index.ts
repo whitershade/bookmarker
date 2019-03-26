@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import Component from './component';
 import { loadItems } from './actions';
 
-const mapStateToProps = (state:any) => ({
+const mapStateToProps = (state: any) => ({
   data: state.articles.list.data,
-  isLoading: state.articles.list.isLoading
+  isLoading: state.articles.list.isLoading,
 });
 
 const mapDispatchToProps = {
-  loadItems
+  loadItems,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

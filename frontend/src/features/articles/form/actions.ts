@@ -7,7 +7,7 @@ import * as types from './constants';
 const startPushItem = createAction(types.START_PUSH_ITEM);
 const pushItemError = createAction(types.PUSH_ITEM_ERROR);
 
-export const onSubmit = ({ url }: { url: string }) => async (dispatch:Dispatch) => {
+export const onSubmit = ({ url }: { url: string }) => async (dispatch: Dispatch) => {
   try {
     dispatch(startPushItem());
 

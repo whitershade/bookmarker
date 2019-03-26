@@ -4,17 +4,19 @@ import PageWrapper from '../../../../decorators/PageWrapper/index';
 import styles from './styles.module.css';
 
 interface Articles {
-    _id: string;
-    title: string;
+  _id: string;
+  title: string;
 }
 
-type Props = {
-  loadItems: Function,
-  data: Articles[]
+interface Props {
+  loadItems: Function;
+  data: Articles[];
+  isLoading: boolean;
 }
 
 const Articles: React.SFC<Props> = ({ loadItems, data }) => {
   useEffect(() => {
+    console.log('bum');
     loadItems();
   }, []);
 
@@ -25,8 +27,8 @@ const Articles: React.SFC<Props> = ({ loadItems, data }) => {
           <Link to={`/articles/${_id}`}>
             {title}
           </Link>
-        </p>)
-      )}
+        </p>
+      ))}
     </div>
   );
 };

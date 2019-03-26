@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@types/enzyme": "^3.9.0",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/expect": "^1.20.4",
     "@types/history": "^4.7.2",
     "@types/jest": "24.0.9",
@@ -18,6 +19,8 @@
     "@types/redux-actions": "^2.3.2",
     "axios": "^0.18.0",
     "connected-react-router": "^6.3.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "final-form": "^4.11.1",
     "history": "^4.7.2",
     "react": "^16.8.3",
@@ -28,18 +31,18 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
-    "redux-thunk": "^2.3.0",
-    "typescript": "3.3.3333"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject",
+    "css-types": "tcm src",
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix"
   },
   "browserslist": [
     ">0.2%",
@@ -47,8 +50,50 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "import",
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "airbnb",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".tsx",
+            ".jsx"
+          ]
+        }
+      ],
+      "indent": "off",
+      "@typescript-eslint/indent": [
+        "error",
+        2
+      ]
+    },
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
+  },
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.10.0"
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.16.0",
+    "typed-css-modules": "^0.4.2",
+    "typescript": "^3.3.4000",
+    "typescript-eslint-parser": "^22.0.0"
   }
 }

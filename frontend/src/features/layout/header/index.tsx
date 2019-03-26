@@ -3,11 +3,11 @@ import Component from './component';
 import { logout } from '../../user/actions';
 
 const mapStateToProps = (state: any) => ({
-    isAuthenticated: state.user.isAuthenticated,
+  isAuthenticated: state.user.isAuthenticated,
 });
 
 const mapDispatchToProps = {
-    logout
+  logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

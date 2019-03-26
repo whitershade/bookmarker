@@ -7,7 +7,7 @@ const startLoadItems = createAction(types.START_LOAD_ITEMS);
 const addItems = createAction(types.ADD_ITEMS);
 const loadItemsError = createAction(types.LOAD_ITEMS_ERROR);
 
-export const loadItems = () => async (dispatch:Dispatch) => {
+export const loadItems = () => async (dispatch: Dispatch) => {
   try {
     dispatch(startLoadItems());
 

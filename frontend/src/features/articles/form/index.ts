@@ -3,7 +3,7 @@ import Component from './component';
 import { onSubmit } from './actions';
 
 const mapDispatchToProps = {
-  onSubmit
+  onSubmit,
 };
 
 export default connect(null, mapDispatchToProps)(Component);

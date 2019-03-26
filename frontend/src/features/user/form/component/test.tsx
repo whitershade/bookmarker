@@ -6,7 +6,7 @@ import Component from './index';
 const actions = {
 };
 const props = {
-  ...actions
+  ...actions,
 };
 
 const Wrapper = shallow(<Component {...props} />);

@@ -6,7 +6,7 @@ import createRootReducer from './reducers';
 
 export const history = createBrowserHistory();
 
-export default function configureStore(preloadedState?: Object) {
+export default function configureStore(preloadedState?: Record<string, any>) {
   const windowIfDefined = typeof window === 'undefined' ? null : window as any;
 
   const composeEnhancer = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,9 +16,9 @@ export default function configureStore(preloadedState?: Object) {
     composeEnhancer(
       applyMiddleware(
         routerMiddleware(history),
-        thunk
-      )
-    )
+        thunk,
+      ),
+    ),
   );
 
   return store;

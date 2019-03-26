@@ -3,17 +3,17 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import App from './features/app';
 import * as serviceWorker from './serviceWorker';
-import configureStore, { history } from './configureStore'
+import configureStore, { history } from './configureStore';
 
 const store = configureStore();
 
 const render = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <App history={history} />
-        </Provider>,
-        document.getElementById('root')
-    )
+  ReactDOM.render(
+    <Provider store={store}>
+      <App history={history} />
+    </Provider>,
+    document.getElementById('root'),
+  );
 };
 
 render();

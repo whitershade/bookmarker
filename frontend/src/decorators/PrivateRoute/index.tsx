@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import Component from './component';
-import {loadItem as loadUser} from "../../features/user/actions";
+import { loadItem as loadUser } from '../../features/user/actions';
 
 
 const mapStateToProps = (state: any) => ({
-    isLoading: state.user.isLoading,
-    isAuthenticated: state.user.isAuthenticated
+  isLoading: state.user.isLoading,
+  isAuthenticated: state.user.isAuthenticated,
 });
 
 const mapDispatchToProps = {
-    loadUser
+  loadUser,
 };
 
 
