@@ -1,13 +1,16 @@
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'redux';
 import * as types from './constants';
+import { startPush, pushError } from '../actions';
 import api from '../../../utils/api';
 
 const startLoadItems = createAction(types.START_LOAD_ITEMS);
 const addItems = createAction(types.ADD_ITEMS);
 const loadItemsError = createAction(types.LOAD_ITEMS_ERROR);
 
-export const loadItems = () => async (dispatch: Dispatch) => {
+const removeItem = createAction(types.REMOVE_ITEM);
+
+export const loadItems = (): Function => async (dispatch: Dispatch) => {
   try {
     dispatch(startLoadItems());
 
@@ -18,5 +21,19 @@ export const loadItems = () => async (dispatch: Dispatch) => {
     alert(e);
 
     dispatch(loadItemsError());
+  }
+};
+
+export const deleteItem = (id: string): Function => (dispatch: Dispatch) => async () => {
+  try {
+    dispatch(startPush());
+
+    const { data: articleId } = await api.delete(`articles/${id}`);
+
+    dispatch(removeItem(articleId));
+  } catch (e) {
+    alert(e);
+
+    dispatch(pushError());
   }
 };

@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
+import { map } from 'lodash';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
@@ -15,24 +16,25 @@ interface Articles {
 }
 
 interface Props {
+  deleteItem: Function;
   loadItems: Function;
   data: Articles[];
 }
 
-const Articles: FC<Props> = ({ loadItems, data }) => {
+const Articles: FC<Props> = ({ loadItems, deleteItem, data }): ReactElement => {
   useEffect(() => {
     loadItems();
-  }, []);
+  }, [data]);
 
   return (
     <List component="nav">
-      { data.map(({ _id, title }) => (
+      { map(data, ({ _id, title }) => (
         <ListItem button key={_id}>
           <Link to={`/articles/${_id}`}>
             <ListItemText primary={title} />
           </Link>
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete">
+            <IconButton onClick={deleteItem(_id)} aria-label="Delete">
               <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>

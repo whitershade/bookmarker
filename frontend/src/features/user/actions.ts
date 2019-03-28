@@ -6,8 +6,8 @@ import api from '../../utils/api';
 const startLoadItem = createAction(types.START_LOAD_ITEM);
 const loadItemError = createAction(types.LOAD_ITEM_ERROR);
 
-export const startPushItem = createAction(types.START_PUSH_ITEM);
-export const pushItemError = createAction(types.PUSH_ITEM_ERROR);
+export const startPush = createAction(types.START_PUSH_ITEM);
+export const pushError = createAction(types.PUSH_ITEM_ERROR);
 
 export const authenticate = createAction(types.AUTHENTICATE);
 export const unauthenticate = createAction(types.UNAUTHENTICATE);
@@ -30,7 +30,7 @@ export const loadItem = () => async (dispatch: Dispatch) => {
 
 export const logout = () => async (dispatch: Dispatch) => {
   try {
-    dispatch(startPushItem());
+    dispatch(startPush());
 
     await api.get('users/logout');
 
@@ -38,6 +38,6 @@ export const logout = () => async (dispatch: Dispatch) => {
   } catch (e) {
     alert(e);
 
-    dispatch(pushItemError());
+    dispatch(pushError());
   }
 };

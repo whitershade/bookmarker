@@ -1,13 +1,13 @@
 import { Dispatch } from 'redux';
 import { push } from 'connected-react-router';
-import { startPushItem, authenticate, pushItemError } from '../actions';
+import { startPush, authenticate, pushError } from '../actions';
 import api from '../../../utils/api';
 
 export const login = (
   { email, password }: { email: string; password: string },
 ) => async (dispatch: Dispatch) => {
   try {
-    dispatch(startPushItem());
+    dispatch(startPush());
 
     const { data } = await api.post('users/login', { email, password });
 
@@ -16,6 +16,6 @@ export const login = (
   } catch (e) {
     alert(e);
 
-    dispatch(pushItemError());
+    dispatch(pushError());
   }
 };

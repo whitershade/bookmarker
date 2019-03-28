@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Component from './component';
-import { loadItems } from './actions';
+import { loadItems, deleteItem } from './actions';
 
 const mapStateToProps = (state: any) => ({
   data: state.articles.list.data,
@@ -9,6 +9,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = {
   loadItems,
+  deleteItem
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

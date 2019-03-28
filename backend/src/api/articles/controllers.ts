@@ -1,8 +1,7 @@
-import { pick } from 'lodash';
+import { pick, keyBy } from 'lodash';
 import { NextFunction, Request, Response } from 'express';
-import HttpException from '../../exceptions/HttpException';
-
 import read, { callbackResult } from 'node-readability';
+import HttpException from '../../exceptions/HttpException';
 
 import Model from './model';
 
@@ -12,7 +11,7 @@ export const getItems = async (req: Request, res: Response, next: NextFunction) 
       .find({ addedBy: req.user._id })
       .lean();
 
-    res.send(items);
+    res.send(keyBy(items, '_id'));
   } catch (e) {
     next(e);
   }
@@ -22,8 +21,8 @@ export const getItem = async (req: Request, res: Response, next: NextFunction) =
   try {
     const item = await Model
       .findOne({
-          _id: req.params.id,
-          addedBy: req.user._id
+        _id: req.params.id,
+        addedBy: req.user._id
       })
       .lean();
 
@@ -66,11 +65,11 @@ export const patchItem = async (req: Request, res: Response, next: NextFunction)
       .findOneAndUpdate(
         { _id: req.params.id, addedBy: req.user._id },
         { $set: body },
-        { 'new': true }
+        { new: true },
       )
       .lean();
 
-      if (!updatedItem) return next(new HttpException(404, 'article not found'));
+    if (!updatedItem) return next(new HttpException(404, 'article not found'));
 
     res.send(updatedItem);
   } catch(e) {
