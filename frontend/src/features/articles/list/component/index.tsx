@@ -1,6 +1,9 @@
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, {
+  useEffect,
+  FC,
+  ReactElement,
+} from 'react';
 import { map } from 'lodash';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -16,15 +19,15 @@ interface Articles {
 }
 
 interface Props {
-  deleteItem: Function;
   loadItems: Function;
+  openModal: Function;
   data: Articles[];
 }
 
-const Articles: FC<Props> = ({ loadItems, deleteItem, data }): ReactElement => {
+const Articles: FC<Props> = ({ loadItems, data, openModal }): ReactElement => {
   useEffect(() => {
     loadItems();
-  }, [data]);
+  }, []);
 
   return (
     <List component="nav">
@@ -34,7 +37,11 @@ const Articles: FC<Props> = ({ loadItems, deleteItem, data }): ReactElement => {
             <ListItemText primary={title} />
           </Link>
           <ListItemSecondaryAction>
-            <IconButton onClick={deleteItem(_id)} aria-label="Delete">
+            <IconButton
+              // onClick={deleteItem(_id)}
+              aria-label="Delete"
+              onClick={openModal(_id)}
+            >
               <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>

@@ -4,7 +4,7 @@ import {
   startLoad,
   addToState,
   loadError,
-  removeItem
+  removeItem,
 } from '../../../../reducers/common';
 
 export const initialState = {

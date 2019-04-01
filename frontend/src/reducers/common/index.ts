@@ -19,5 +19,5 @@ export const loadError = (state: any) => ({
 
 export const removeItem = (state: any, action: AnyAction) => ({
   ...state,
-  data: omit(state.data, action.payoad),
+  data: omit(state.data, action.payload),
 });

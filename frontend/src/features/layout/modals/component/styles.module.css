@@ -1,0 +1,36 @@
+.modalWrapper {
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity .3s ease;
+}
+
+.opening {
+    animation: fadeIn .3s;
+}
+
+.closing {
+    opacity: 0;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

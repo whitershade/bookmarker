@@ -24,7 +24,7 @@ export const loadItems = (): Function => async (dispatch: Dispatch) => {
   }
 };
 
-export const deleteItem = (id: string): Function => (dispatch: Dispatch) => async () => {
+export const deleteItem = (id: string): Function => async (dispatch: Dispatch) => {
   try {
     dispatch(startPush());
 

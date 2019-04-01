@@ -1,19 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { FC } from 'react';
 import Header from './header';
-import Confirm from './confirm';
+import Modals from './modals';
 
-const Component = (props: any) => (
-  <Fragment>
+interface Props {
+  children: any;
+}
+
+const Component: FC<Props> = ({ children }) => (
+  <>
     <Header />
     <main>
-      { props.children }
+      { children }
     </main>
-    <Confirm
-      open={true}
-      onClose={() => {}}
-      onConfirm={() => {}}
-    />
-  </Fragment>
+    <Modals />
+  </>
 );
 
 export default Component;
