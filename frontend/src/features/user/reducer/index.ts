@@ -11,9 +11,9 @@ export const initialState = {
 export default handleActions({
   [types.START_LOAD_ITEM]: startLoad,
   [types.LOAD_ITEM_ERROR]: loadError,
-  [types.AUTHENTICATE]: (state: any, payload) => ({
+  [types.AUTHENTICATE]: (state: any, action) => ({
     ...state,
-    data: payload,
+    data: action.payload,
     isLoading: false,
     isAuthenticated: true,
   }),

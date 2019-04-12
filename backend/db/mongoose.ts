@@ -16,4 +16,4 @@ mongoose.connection.on('open', () => {
   global.console.error('MongoDB connect success');
 });
 
-export default mongoose
+export default mongoose;

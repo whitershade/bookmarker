@@ -1,16 +1,16 @@
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
-import React, { Fragment, MouseEvent } from 'react';
+import React, { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
-interface IProps {
+interface Props {
   isAuthenticated: boolean;
   logout: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Component = ({ isAuthenticated, logout }: IProps) => (
+const Component = ({ isAuthenticated, logout }: Props) => (
   <header className={styles.header}>
     <AppBar position="static" color="default">
       <Toolbar>
@@ -25,22 +25,27 @@ const Component = ({ isAuthenticated, logout }: IProps) => (
           </div>
           <div>
             { isAuthenticated ? (
-              <Button
-                onClick={logout}
-                color="primary"
-                variant="contained"
-              >
-                              Logout
-              </Button>
+              <>
+                <Link to="/settings" className={styles.link}>
+                  <Button>Settings</Button>
+                </Link>
+                <Button
+                  onClick={logout}
+                  color="primary"
+                  variant="contained"
+                >
+                  Logout
+                </Button>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <Link to="/login" className={styles.link}>
                   <Button>Login</Button>
                 </Link>
                 <Link to="/register" className={styles.link}>
                   <Button>Register</Button>
                 </Link>
-              </Fragment>
+              </>
             ) }
           </div>
         </div>

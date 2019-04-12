@@ -6,6 +6,7 @@ import Article from '../features/articles/single';
 import ArticleForm from '../features/articles/form';
 import LoginForm from '../features/user/login';
 import RegisterForm from '../features/user/register';
+import UserSettings from '../features/user/settings';
 
 const NoMatch = () => <div>404</div>;
 
@@ -14,6 +15,7 @@ const routes = (
     <PrivateRoute exact path="/" component={Articles} />
     <PrivateRoute exact path="/articles/add" component={ArticleForm} />
     <PrivateRoute exact path="/articles/:id" component={Article} />
+    <PrivateRoute exact path="/settings" component={UserSettings} />
     <Route exact path="/login" component={LoginForm} />
     <Route exact path="/register" component={RegisterForm} />
     <Route component={NoMatch} />

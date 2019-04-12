@@ -8,27 +8,27 @@ router
   .get(
     '/',
     isAuth,
-    controllers.getItems
+    controllers.getItems,
   )
   .get(
     '/:id',
     isAuth,
-    controllers.getItem
+    controllers.getItem,
   )
   .post(
     '/',
     isAuth,
-    controllers.createItem
+    controllers.createItem,
   )
   .patch(
     '/:id',
     isAuth,
-    controllers.patchItem
+    controllers.patchItem,
   )
   .delete(
     '/:id',
     isAuth,
-    controllers.deleteItem
+    controllers.deleteItem,
   );
 
 export default router;

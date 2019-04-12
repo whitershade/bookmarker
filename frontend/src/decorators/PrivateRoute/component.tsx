@@ -8,7 +8,7 @@ const PrivateRoute = ({
   const [initialized, initialize] = useState(false);
 
   useEffect(() => {
-    loadUser();
+    if (!isAuthenticated) loadUser();
     if (!initialized) { initialize(true); }
   }, []);
 

@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import Articles from '../articles/model';
 import mongoose from '../../../db/mongoose';
 
 export const UserSchema = new mongoose.Schema({
@@ -79,6 +80,11 @@ UserSchema.pre('save', function userPreSave(next: () => void) {
   }
 
   next();
+});
+
+UserSchema.pre('deleteOne', function (next: () => void) {
+  // @ts-ignore
+  Articles.deleteMany({ addedBy: this.getQuery()._id }, next);
 });
 
 export const UserModel = mongoose.model('User', UserSchema);
