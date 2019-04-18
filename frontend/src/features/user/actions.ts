@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { Dispatch } from 'redux';
 import * as types from './constants';
+import setGlobalVariables from './utils/setGlobalVariables';
 import api from '../../utils/api';
 
 const startLoadItem = createAction(types.START_LOAD_ITEM);
@@ -13,12 +14,11 @@ export const authenticate = createAction(types.AUTHENTICATE);
 export const unauthenticate = createAction(types.UNAUTHENTICATE);
 
 export const loadItem = () => async (dispatch: Dispatch) => {
-  console.log('load user');
-
   try {
     dispatch(startLoadItem());
 
     const { data } = await api.get('users');
+    setGlobalVariables(data.settings);
 
     dispatch(authenticate(data));
   } catch (e) {

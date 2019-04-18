@@ -1,16 +1,30 @@
+import { createAction } from 'redux-actions';
 import { Dispatch } from 'redux';
 import { unauthenticate, pushError, startPush } from '../actions';
+import { UPDATE } from '../constants';
 import api from '../../../utils/api';
+import setGlobalVarialbes from '../utils/setGlobalVariables';
 
-export const deleteItem = (): Function => async (dispatch: Dispatch, getState: Function) => {
+const updateItem = createAction(UPDATE);
+
+export const deleteItem = (): Function => async (dispatch: Dispatch) => {
   try {
     dispatch(startPush());
-
-    const id = getState().user.data._id;
-
-    await api.delete(`users/${id}`);
-
+    await api.delete('users');
     dispatch(unauthenticate());
+  } catch (e) {
+    alert(e);
+
+    dispatch(pushError());
+  }
+};
+
+export const patchItem = (formValues: any): Function => async (dispatch: Dispatch) => {
+  try {
+    dispatch(startPush());
+    const newUser = api.patch('users', formValues);
+    dispatch(updateItem(newUser));
+    setGlobalVarialbes(formValues.settings);
   } catch (e) {
     alert(e);
 

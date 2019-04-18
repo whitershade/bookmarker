@@ -18,6 +18,16 @@ export const UserSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  settings: {
+    textColor: {
+      type: String,
+      default: '#000',
+    },
+    backgroundColor: {
+      type: String,
+      default: '#FFF',
+    },
+  },
 }, {
   timestamps: true,
   collection: 'Users',
@@ -61,7 +71,7 @@ UserSchema.statics = {
   ) {
     this
       .findById(id)
-      .select('email name')
+      .select('email name settings')
       .lean()
       .exec((err: { message: string }, user: any) => {
         if (err) return next({ message: err.message });

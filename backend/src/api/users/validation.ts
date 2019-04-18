@@ -17,19 +17,19 @@ export default {
         .max(100)
         .required(),
       name: Joi
-        .string()
-    }
+        .string(),
+    },
   },
   patchItem: {
     body: {
-      email: Joi
-        .string()
-        .trim()
-        .email()
-        .min(5)
-        .max(100),
       name: Joi
-        .string()
-    }
-  }
+        .string(),
+      settings: Joi
+        .object()
+        .keys({
+          textColor: Joi.string().max(10),
+          backgroundColor: Joi.string().max(10),
+        }),
+    },
+  },
 };

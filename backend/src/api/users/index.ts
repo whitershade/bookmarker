@@ -33,7 +33,7 @@ router
     controllers.login,
   )
   .delete(
-    '/:id',
+    '/',
     isAuth,
     controllers.deleteItem,
   );

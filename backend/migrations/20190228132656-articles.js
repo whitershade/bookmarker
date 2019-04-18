@@ -1,9 +1,9 @@
 module.exports = {
   up(db) {
-    return db.collection('Articles').updateMany( {}, { $rename: { "text": "content" } } )
+    return db.collection('Articles').updateMany({}, { $rename: { text: 'content' } });
   },
 
   down(db) {
-    return db.collection('Articles').updateMany( {}, { $rename: { "content": "text" } } )
-  }
+    return db.collection('Articles').updateMany({}, { $rename: { content: 'text' } });
+  },
 };

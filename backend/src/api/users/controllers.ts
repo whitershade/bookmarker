@@ -61,14 +61,14 @@ export const logout = (req: Request, res: Response) => {
 export const deleteItem = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const item = await UserModel
-      .deleteOne({ _id: req.params.id });
+      .deleteOne({ _id: req.user._id});
 
     if (!item) return next(new HttpException(404, 'user not found'));
 
     // @ts-ignore
     req.session.destroy();
     res.clearCookie('connect.sid');
-    return res.send(item._id);
+    return res.send(req.user._id);
   } catch (e) {
     return next(e);
   }

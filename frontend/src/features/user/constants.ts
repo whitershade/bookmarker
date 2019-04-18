@@ -6,3 +6,5 @@ export const PUSH_ITEM_ERROR = '@USER/PUSH_ITEM_ERROR';
 
 export const AUTHENTICATE = '@USER/AUTHENTICATE';
 export const UNAUTHENTICATE = '@USER/UNAUTHENTICATE';
+
+export const UPDATE = '@USER/UPDATE';
