@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import * as types from '../constants';
-import { startLoad, loadError } from '../../../reducers/common';
+import { startLoad, loadError, updateItem } from '../../../reducers/common';
 
 export const initialState = {
   data: {},
@@ -11,6 +11,7 @@ export const initialState = {
 export default handleActions({
   [types.START_LOAD_ITEM]: startLoad,
   [types.LOAD_ITEM_ERROR]: loadError,
+  [types.UPDATE]: updateItem,
   [types.AUTHENTICATE]: (state: any, action) => ({
     ...state,
     data: action.payload,

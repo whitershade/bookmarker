@@ -22,7 +22,7 @@ export const deleteItem = (): Function => async (dispatch: Dispatch) => {
 export const patchItem = (formValues: any): Function => async (dispatch: Dispatch) => {
   try {
     dispatch(startPush());
-    const newUser = api.patch('users', formValues);
+    const { data: newUser } = await api.patch('users', formValues);
     dispatch(updateItem(newUser));
     setGlobalVarialbes(formValues.settings);
   } catch (e) {
