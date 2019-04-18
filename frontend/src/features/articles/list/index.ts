@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import uuid from 'uuid';
+import { push } from 'connected-react-router';
 import Component from './component';
 import { loadItems, deleteItem } from './actions';
 import { openModal } from '../../layout/modals/actions';
@@ -16,13 +17,9 @@ const mapDispatchToProps = (dispatch: Function) => ({
     id: uuid.v4(),
     type: 'confirmation',
     text: 'Are you sure to do this?',
-    onClose: () => console.log('fire at closing event'),
-    // @ts-ignore
-    onConfirm: () => {
-      console.log('onConfirm');
-      dispatch(deleteItem(id));
-    },
+    onConfirm: () => dispatch(deleteItem(id)),
   })),
+  push: (link: any) => dispatch(push(link)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);
